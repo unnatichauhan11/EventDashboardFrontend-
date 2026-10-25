@@ -1,0 +1,431 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #202638;
+  background: #f4f6fb;
+  font-synthesis: none;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #f4f6fb;
+  color: #202638;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.topbar {
+  min-height: 76px;
+  padding: 14px 28px;
+  background: #fff;
+  border-bottom: 1px solid #e6e9f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.topbar h1 {
+  margin: 0;
+  font-size: 21px;
+}
+
+.topbar p {
+  margin: 2px 0 0;
+  color: #778096;
+}
+
+.app-layout {
+  display: flex;
+  min-height: calc(100vh - 76px);
+}
+
+.sidebar {
+  width: 210px;
+  flex-shrink: 0;
+  padding: 18px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  background: #fff;
+  border-right: 1px solid #e6e9f0;
+}
+
+.nav-link {
+  width: 100%;
+  text-align: left;
+  color: #596177;
+  background: transparent;
+  font-weight: 600;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  background: #eef0ff;
+  color: #394fdb;
+}
+
+.content {
+  width: 100%;
+  max-width: 1450px;
+  min-width: 0;
+  padding: 28px;
+}
+
+.content h2 {
+  margin: 0 0 8px;
+}
+
+.page {
+  display: none;
+}
+
+.page.active {
+  display: block;
+}
+
+.muted {
+  margin-top: 0;
+  color: #778096;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin: 22px 0;
+}
+
+.stat {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  background: #fff;
+  border: 1px solid #e6e9f0;
+  border-radius: 14px;
+}
+
+.stat span {
+  color: #778096;
+}
+
+.stat strong {
+  font-size: 30px;
+}
+
+.panel {
+  margin: 22px 0;
+  padding: 20px;
+  background: #fff;
+  border: 1px solid #e6e9f0;
+  border-radius: 14px;
+  box-shadow: 0 4px 16px #26345a08;
+}
+
+.panel h3 {
+  margin: 0 0 14px;
+  font-size: 17px;
+}
+
+.panel-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+}
+
+.panel-heading h3 {
+  margin: 0;
+}
+
+button {
+  border: 0;
+  border-radius: 8px;
+  padding: 10px 15px;
+  background: #4259e8;
+  color: #fff;
+  font: inherit;
+  cursor: pointer;
+}
+
+button:hover {
+  filter: brightness(.96);
+}
+
+button.secondary {
+  background: #e9ecf5;
+  color: #293047;
+}
+
+button.danger {
+  background: #bd3346;
+  color: #fff;
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  min-width: 0;
+  padding: 10px 11px;
+  border: 1px solid #d9deea;
+  border-radius: 8px;
+  background: #fff;
+  color: #202638;
+  font: inherit;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: 2px solid #b9c3ff;
+  border-color: #6477ef;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-weight: 600;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.full-width {
+  grid-column: 1 / -1;
+}
+
+.time-fields {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: 16px;
+}
+
+.time-fields label {
+  flex: 1;
+}
+
+.checkbox-label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 9px;
+}
+
+.checkbox-label input {
+  width: auto;
+}
+
+.form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.inline-form,
+.project-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr auto;
+  gap: 10px;
+}
+
+.inline-form {
+  grid-template-columns: 1fr 1fr auto;
+}
+
+.stack-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 700px;
+}
+
+.search {
+  max-width: 280px;
+}
+
+.record-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.record {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 14px;
+  border: 1px solid #e6e9f0;
+  border-radius: 10px;
+}
+
+.record h4 {
+  margin: 0 0 4px;
+}
+
+.record p {
+  margin: 3px 0;
+  color: #778096;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.record-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.record-actions button {
+  padding: 7px 10px;
+  font-size: 13px;
+}
+
+.empty {
+  padding: 16px 0;
+  color: #778096;
+}
+
+.badge {
+  display: inline-block;
+  margin-top: 6px;
+  padding: 3px 9px;
+  border-radius: 20px;
+  background: #edf0ff;
+  color: #3f51c9;
+  font-size: 12px;
+}
+
+textarea {
+  resize: vertical;
+}
+
+body.compact .panel,
+body.compact .stat {
+  padding: 13px;
+}
+
+body.dark {
+  background: #171b28;
+  color: #edf0fa;
+}
+
+body.dark .topbar,
+body.dark .sidebar,
+body.dark .panel,
+body.dark .stat {
+  background: #22283a;
+  border-color: #363e54;
+}
+
+body.dark .sidebar {
+  background: #1d2333;
+}
+
+body.dark .nav-link {
+  color: #dce2f4;
+}
+
+body.dark .nav-link.active,
+body.dark .nav-link:hover {
+  background: #303a61;
+}
+
+body.dark input,
+body.dark textarea,
+body.dark select {
+  background: #171b28;
+  color: #edf0fa;
+  border-color: #454d63;
+}
+
+body.dark .muted,
+body.dark .topbar p,
+body.dark .stat span,
+body.dark .record p {
+  color: #a9b2ca;
+}
+
+body.dark .record {
+  border-color: #363e54;
+}
+
+@media (max-width: 900px) {
+  .stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .inline-form,
+  .project-form {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 650px) {
+  .app-layout {
+    display: block;
+  }
+
+  .sidebar {
+    width: 100%;
+    padding: 8px;
+    flex-direction: row;
+    overflow-x: auto;
+    border-right: 0;
+    border-bottom: 1px solid #e6e9f0;
+  }
+
+  .nav-link {
+    width: auto;
+    white-space: nowrap;
+    padding: 9px 11px;
+  }
+
+  .content {
+    padding: 18px;
+  }
+
+  .topbar {
+    padding: 14px 18px;
+  }
+
+  .form-grid,
+  .inline-form,
+  .project-form {
+    grid-template-columns: 1fr;
+  }
+
+  .full-width,
+  .time-fields {
+    grid-column: 1;
+  }
+
+  .time-fields {
+    flex-direction: column;
+  }
+
+  .panel-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .search {
+    max-width: none;
+  }
+
+  .record {
+    flex-direction: column;
+  }
+}

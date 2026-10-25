@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <h1>Event Dashboard</h1>
+      <p id="welcome">Welcome back</p>
+    </div>
+    <button id="themeToggle" class="secondary">Toggle theme</button>
+  </header>
+
+  <div class="app-layout">
+    <aside class="sidebar" aria-label="Main navigation">
+      <button class="nav-link active" data-page="dashboard">Dashboard</button>
+      <button class="nav-link" data-page="users">Users</button>
+      <button class="nav-link" data-page="projects">Projects</button>
+      <button class="nav-link" data-page="events">Events</button>
+      <button class="nav-link" data-page="feedback">Feedback</button>
+      <button class="nav-link" data-page="suggestions">Suggestions</button>
+      <button class="nav-link" data-page="preferences">Preferences</button>
+    </aside>
+
+    <main class="content">
+      <section class="page active" id="page-dashboard">
+        <div class="page-heading">
+          <div><h2>Dashboard</h2><p class="muted">A quick overview of your workspace.</p></div>
+        </div>
+        <div class="stats">
+          <article class="stat"><span>Events</span><strong id="eventCount">0</strong></article>
+          <article class="stat"><span>Users</span><strong id="userCount">0</strong></article>
+          <article class="stat"><span>Projects</span><strong id="projectCount">0</strong></article>
+          <article class="stat"><span>Suggestions</span><strong id="suggestionCount">0</strong></article>
+        </div>
+        <section class="panel">
+          <div class="panel-heading"><h3>Upcoming events</h3><button data-go="events">Manage events</button></div>
+          <div id="upcomingEvents" class="record-list"></div>
+        </section>
+      </section>
+
+      <section class="page" id="page-events">
+        <h2>Events</h2>
+        <section class="panel">
+          <h3 id="eventFormHeading">Create event</h3>
+          <form id="eventForm" class="form-grid">
+            <input type="hidden" id="eventId">
+            <label>Title<input id="eventTitle" required maxlength="100" placeholder="Team meeting"></label>
+            <label>Location<input id="eventLocation" placeholder="Conference room"></label>
+            <label class="full-width">Description<textarea id="eventDescription" rows="3" placeholder="Event details"></textarea></label>
+            <label>Date<input id="eventDate" type="date" required></label>
+            <label class="checkbox-label"><input id="eventAllDay" type="checkbox"> All day</label>
+            <div id="eventTimeFields" class="time-fields">
+              <label>Start time<input id="eventStart" type="time" value="09:00" step="900"></label>
+              <label>End time<input id="eventEnd" type="time" value="10:00" step="900"></label>
+            </div>
+            <div class="full-width form-actions">
+              <button type="submit">Save event</button>
+              <button type="button" class="secondary" id="clearEventForm">Clear</button>
+            </div>
+          </form>
+        </section>
+        <section class="panel">
+          <div class="panel-heading"><h3>Saved events</h3><input id="eventSearch" class="search" placeholder="Search events…"></div>
+          <div id="eventList" class="record-list"></div>
+        </section>
+      </section>
+
+      <section class="page" id="page-users">
+        <h2>Users</h2>
+        <section class="panel">
+          <h3>Add user</h3>
+          <form id="userForm" class="inline-form">
+            <input id="userName" required placeholder="Full name">
+            <input id="userEmail" type="email" required placeholder="Email address">
+            <button>Add user</button>
+          </form>
+        </section>
+        <section class="panel">
+          <div class="panel-heading"><h3>All users</h3><input id="userSearch" class="search" placeholder="Search users…"></div>
+          <div id="userList" class="record-list"></div>
+        </section>
+      </section>
+
+      <section class="page" id="page-projects">
+        <h2>Projects</h2>
+        <section class="panel">
+          <h3>Add project</h3>
+          <form id="projectForm" class="project-form">
+            <input id="projectName" required placeholder="Project name">
+            <input id="projectDescription" placeholder="Short description">
+            <select id="projectStatus"><option>Planned</option><option>In progress</option><option>Completed</option></select>
+            <button>Add project</button>
+          </form>
+        </section>
+        <section class="panel">
+          <div class="panel-heading"><h3>All projects</h3><input id="projectSearch" class="search" placeholder="Search projects…"></div>
+          <div id="projectList" class="record-list"></div>
+        </section>
+      </section>
+
+      <section class="page" id="page-feedback">
+        <h2>Feedback</h2>
+        <section class="panel">
+          <h3>Send feedback</h3>
+          <form id="feedbackForm" class="stack-form">
+            <label>Your name<input id="feedbackName" placeholder="Name (optional)"></label>
+            <label>Feedback<textarea id="feedbackMessage" required rows="4" placeholder="Share your feedback…"></textarea></label>
+            <button>Submit feedback</button>
+          </form>
+        </section>
+        <section class="panel"><h3>Submitted feedback</h3><div id="feedbackList" class="record-list"></div></section>
+      </section>
+
+      <section class="page" id="page-suggestions">
+        <h2>Suggestions</h2>
+        <section class="panel">
+          <h3>Add suggestion</h3>
+          <form id="suggestionForm" class="stack-form">
+            <label>Suggestion<textarea id="suggestionText" required rows="3" placeholder="What should we improve?"></textarea></label>
+            <button>Submit suggestion</button>
+          </form>
+        </section>
+        <section class="panel"><h3>Suggestion box</h3><div id="suggestionList" class="record-list"></div></section>
+      </section>
+
+      <section class="page" id="page-preferences">
+        <h2>Preferences</h2>
+        <section class="panel">
+          <form id="preferencesForm" class="stack-form">
+            <label>Display name<input id="displayName" placeholder="Your name"></label>
+            <label class="checkbox-label"><input id="darkMode" type="checkbox"> Dark mode</label>
+            <label class="checkbox-label"><input id="compactMode" type="checkbox"> Compact layout</label>
+            <div class="form-actions">
+              <button>Save preferences</button>
+              <button type="button" class="danger" id="resetData">Reset all app data</button>
+            </div>
+          </form>
+        </section>
+      </section>
+    </main>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
